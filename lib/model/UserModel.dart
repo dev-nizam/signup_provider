@@ -1,4 +1,4 @@
-/// id : 77
+/// id : 87
 /// name : "nisam"
 /// email : "nisam@gmail.com"
 /// password : "12345678"
@@ -6,10 +6,10 @@
 
 class UserModel {
   UserModel({
-      num id, 
-      String name, 
-      String email, 
-      String password, 
+      num? id, 
+      String? name, 
+      String? email, 
+      String? password, 
       dynamic userImg,}){
     _id = id;
     _name = name;
@@ -25,15 +25,15 @@ class UserModel {
     _password = json['password'];
     _userImg = json['user_img'];
   }
-  num _id;
-  String _name;
-  String _email;
-  String _password;
+  num? _id;
+  String? _name;
+  String? _email;
+  String? _password;
   dynamic _userImg;
-UserModel copyWith({  num id,
-  String name,
-  String email,
-  String password,
+UserModel copyWith({  num? id,
+  String? name,
+  String? email,
+  String? password,
   dynamic userImg,
 }) => UserModel(  id: id ?? _id,
   name: name ?? _name,
@@ -41,10 +41,10 @@ UserModel copyWith({  num id,
   password: password ?? _password,
   userImg: userImg ?? _userImg,
 );
-  num get id => _id;
-  String get name => _name;
-  String get email => _email;
-  String get password => _password;
+  num? get id => _id;
+  String? get name => _name;
+  String? get email => _email;
+  String? get password => _password;
   dynamic get userImg => _userImg;
 
   Map<String, dynamic> toJson() {

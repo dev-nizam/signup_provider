@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:signup_provider/provider/UserProvider.dart';
 import 'package:signup_provider/user/signup.dart';
 import 'package:provider/provider.dart';
 void main() {
   runApp( MultiProvider(providers: [
-ChangeNotifierProvider<>
+ChangeNotifierProvider<UserProvider>(create: (_)=>UserProvider()),
   ],
   child: MyApp()));
 }

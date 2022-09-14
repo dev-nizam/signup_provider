@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:signup_provider/provider/UserProvider.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -14,11 +16,13 @@ class _SignUpState extends State<SignUp> {
   TextEditingController UsernameController =TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final userProvider=Provider.of<UserProvider>(context);
+    print(userProvider.success.toString()+ 'success');
     return SafeArea(
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white,
-          body: Column(
+          body: userProvider.loading?CircularProgressIndicator():userProvider.success?Center(child: Text("Signuped")):Column(
             children: [
               Divider(
                 height: 40,
@@ -78,7 +82,12 @@ class _SignUpState extends State<SignUp> {
               ),
               Column(
                 children: [
-                  ElevatedButton(onPressed: (){}, child: Text("SignUp")
+                  ElevatedButton(
+                      onPressed: (){
+                        print('button click');
+                        print(userProvider.success.toString()+ 'success');
+                    userProvider.signupProvider(username: UsernameController.text, password: PasswordController.text, email: EmailController.text);
+                  }, child: Text("SignUp")
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -105,6 +114,6 @@ class _SignUpState extends State<SignUp> {
               ),
             ],
           ),
-        ));
+        ),);
   }
 }
